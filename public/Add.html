@@ -1,0 +1,292 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Welcome</title>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+
+        <style type="text/css">
+            html, body {
+                background: url(BG.jpg);
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                -o-background-size: 100% 100%, auto;
+                -moz-background-size: 100% 100%, auto;
+                -webkit-background-size: 100% 100%, auto;
+                background-size: 100% 100%, auto;
+                color: #000000;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 100vh;
+                margin: 0;
+            }
+
+            .full-height {
+                height: 80vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 50px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 20px;
+            }
+
+            .txt{
+                color: #47476b;
+                font-size: 30px;
+            }
+
+            .txt2{
+                font-size: 70px;
+            }
+
+            .button {
+    			background-color: #4CAF50; /* Green */
+			    border: none;
+			    color: white;
+			    padding: 2px 5px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 14px;
+			    margin: 1px 1px;
+			    cursor: pointer;
+			}
+			.button3 {border-radius: 8px;}
+
+			@font-face {
+			    font-family: myFirstFont;
+			    src: url(Bizon.otf);
+			}
+
+			.ft {
+				font-family: myFirstFont;
+			}
+
+
+
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                
+                    <img src="text.png">
+              
+                <div ng-app="proApp" ng-controller="ProCtrl">
+                <div class="title txt">
+                    <table style="width:100%;text-align:center;background-color:#ffe6dc;color:#000000" border="1" >
+                        <tr style="background-color:#dea9a9;color:#000000;"  class="ft">
+                            <td>Name</td>
+                            <td>Gender</td>
+                            <td>Manage</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul ng-repeat="pro in peoples track by $index" ng-if="!isEmpty(pro)">
+                                 {{pro.name}}
+
+                                </ul>
+                            </td>
+                            <td>
+                                <ul ng-repeat="pro in peoples track by $index" ng-if="!isEmpty(pro)">
+                                 {{pro.sex}}
+                                </ul>
+                            </td>
+                           
+                            <td>
+                                <ul ng-repeat="pro in peoples track by $index" ng-if="!isEmpty(pro)">
+                               	<a href="result.html">
+                                <button type="submit" class="button button3" style="background-color:#ffa7b6;color:#cc5c6e"> Result </button>
+                                </a>
+                                 <button type="submit" ng-click="edit(pro.id)" class="button button3" style="background-color:#00bf8a;color:#007252"> Edit </button>
+                                 <button type="submit" ng-click="delete(pro.id)" class="button button3" style="background-color:#d9534f;color:#7f3a45"> Delete </button>    
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+
+
+                    <table style="width:100%;text-align:center;" border="0" >
+                        <tr>
+                            <td>
+      					<table width="400" border="0" align="right">
+        					<tbody>
+          						<tr>
+          							<td>
+
+                    				
+                                    <h2 class="ft">New Profile</h2>
+
+									<label for="name">Name:</label><br>
+                                        <input type="text" id="name" ng-model="addPro.name"><br>
+                                    <label for="sex">Gender:</label><br>
+                                         <select name="sex" id="sex" ng-model="addPro.sex">
+									        <option value="Male">Male</option>
+									        <option value="Female">Female</option>
+									     </select><br><br>
+                                    <button ng-click="add()">Submit</button><br>
+                                	</td>
+                                	</td>
+							      </tr>
+							    </tbody>
+							  </table>
+                            <td>
+                            <table width="400" border="0" align="right">
+        					<tbody>
+          						<tr>
+          							<td>
+
+                                    <h3 class="ft">Edit Profile</h3>
+                                        <input type="hidden" id="id" ng-model="editPro.id">
+                                    <label for="name">Name:</label><br>
+                                        <input type="text" id="name" ng-model="editPro.name"><br>
+                                    <label for="sex">Gender:</label><br>
+                                         <select name="sex" id="sex" ng-model="editPro.sex">
+										    <option value="Male">Male</option>
+										    <option value="Female">Female</option>
+									     </select><br><br>
+
+                                    <button ng-click="update(editPro.id)">Update</button><br>
+                                    <br>
+									</td>
+							      </tr>
+							    </tbody>
+							  </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                </div>
+        	</div>
+            </div>
+        </div>
+        <body>
+        <center>
+		<picture>
+		 <img src="A.png" alt="aa" style="width:280px;"> &nbsp;
+		  
+		  <img src="B.png" alt="bb" style="width:280px;"> &nbsp;
+		  
+		  <img src="O.png" alt="oo" style="width:280px;"> &nbsp;
+
+		   <img src="AB.png" alt="ab" style="width:280px;"> 
+		</picture>
+		</center>
+
+
+    <script type="text/javascript">
+        var app = angular.module("proApp",['ngResource'])
+        app.controller("ProCtrl", function($scope, $resource){
+            var Pro = $resource('/api/peoples/:pro_id',{pro_id: '@id'},
+                { 
+                    update: {method:'PUT' } 
+                })
+            $scope.editPro = {}
+            $scope.result = {}
+            $scope.peoples = Pro.query()
+
+            $scope.get = function(id) {
+                Pro.get({pro_id:id}, function(pro) {
+					$scope.result = pro
+  
+                })
+            }   
+
+            $scope.add =  function() {
+               //  var givenBear = new Bear($scope.addPro)
+                // givenBear.$save(function(data){ 
+                //     console.log(data.message)                    
+                // }) 
+
+                Pro.save({name: $scope.addPro.name,
+                         sex: $scope.addPro.sex, 
+                         
+                         bg: $scope.addPro.bg,
+                         color: $scope.addPro.color
+                        })
+                $scope.peoples = Pro.query()
+            }
+
+            $scope.edit = function(id) {
+                Pro.get({pro_id:id}, function(pro) {
+                    $scope.editPro.id = id
+                    $scope.editPro.name = pro.name
+                    $scope.editPro.sex = pro.sex
+                    $scope.result = pro
+                    $scope.message = 'Edited pro ' +  id
+                    $scope.get(id)
+                })
+            }
+
+            $scope.update = function(id) {
+                Pro.update( {pro_id: id}, { name: $scope.editPro.name,
+                         					sex: $scope.editPro.sex, 
+                                              })                
+                $scope.result = 'Update pro ' + id
+                $scope.peoples = Pro.query()
+                $scope.get(id)
+            }
+
+            $scope.delete = function(id) {
+                Pro.delete( {pro_id: id})
+                $scope.result = 'Delete pro ' + id
+                $scope.peoples = Pro.query()
+            }
+
+            $scope.isEmpty = function(pro) {
+                return Object.keys(pro).length == 0
+            }
+
+            $scope.select = function(id, pro) {
+                return id == pro.id
+            }
+
+        })
+    </script>
+
+
+    </body>
+</html>
